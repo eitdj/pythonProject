@@ -4,16 +4,28 @@
 # https://aka.ms/yaml
 
 trigger:
+- master
+
+schedules:
+- cron: "*/20 * * * *"
+  displayName: "Every 20 minutes schedule"
   branches:
     include:
-      - master
+    - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: local
 
 steps:
+- script: pytest
+  displayName: 'Run a one-line script'
+
 - script: |
-    python -m pip install --upgrade pip
-    pip install pytest
-    pytest
-  displayName: 'Run Pytest'
+    cd $(System.DefaultWorkingDirectory)
+    echo "Current directory: $(System.DefaultWorkingDirectory)"
+  displayName: 'Print Current Directory'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
