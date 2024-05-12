@@ -6,12 +6,12 @@
 trigger:
 - master
 
-schedules:
-- cron: "*/20 * * * *"
-  displayName: "Every 20 minutes schedule"
-  branches:
-    include:
-    - master
+# schedules:
+# - cron: "*/20 * * * *"
+#   displayName: "Every 20 minutes schedule"
+#   branches:
+#     include:
+#     - master
 
 pool:
   name: local
