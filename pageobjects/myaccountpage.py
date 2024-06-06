@@ -8,9 +8,20 @@ class MyAccount(BasePage):
     Show_All_Laptops_and_Notebooks_filed = (By.LINK_TEXT, "Show All Laptops & Notebooks")
     hplp_3085_field = (By.XPATH, "(//span[text()='Add to Cart'])[2]")
     success_cart_message = (By.XPATH, "//div[@class='alert alert-success alert-dismissible']")
+    search_tab_input_field = (By.XPATH, "//div[@id = 'search']")
+    search_button = (By.XPATH, "//div[@id = 'search']/child::span/button")
 
     def __init__(self, driver):
         super().__init__(driver)
+
+    def get_iphone_by_search(self):
+        self.set_items_by_search_(self.search_tab_input_field)
+        self.get_seacrh_items_by_click(self.search_button)
+        self.scroll_down_script()
+        self.scroll_mid_script()
+
+
+
 
     def laptops_and_notebooks(self):
         self.click_when_visibility(self.laptop_notebooks_field)
