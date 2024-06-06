@@ -22,3 +22,8 @@ class TestAddToCart(TestBase):
             assert True
         else:
             CaptureScreen.capture_screenshot(self.driver)
+
+    def test_add_iphone_cart(self):
+        loginpage = LoginPage(self.driver)
+        loginpage.get_login_successfully("coldwar@yopmail.com", "srvt@123")
+

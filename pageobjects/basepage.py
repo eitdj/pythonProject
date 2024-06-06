@@ -5,6 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePage:
     scroll_down_script = "window.scrollBy(0, 500);"
+    scroll_mid_script = "window.scrollBy(0,400);"
 
     def __init__(self, driver):
         self.driver = driver
@@ -69,4 +70,14 @@ class BasePage:
     def java_script_scroll_down(self):
         self.driver.execute_script(self.scroll_down_script)
 
-    """"switch to pop up"""
+    def java_script_scroll_mid(self):
+        self.driver.execute(self.scroll_mid_script)
+
+    """"Search by search field"""
+    def set_items_by_search_(self,locator,value):
+        element = self.finding_element(locator)
+        element.sendkeys(value)
+
+    def get_seacrh_items_by_click(self,locator):
+        search= self.finding_element(locator)
+        self.click_when_clickable(search)
