@@ -9,6 +9,14 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
+    def set_search_field(self, locator,values):
+        element = self.finding_element(locator)
+        element.sendkeys(values)
+
+    def get_search_field(self, locator):
+        element = self.finding_element(locator)
+        element.click()
+
     def clear_browser_cache(self):
         self.driver.execute_script("window.localStorage.clear();")
         self.driver.execute_script("window.sessionStorage.clear();")
